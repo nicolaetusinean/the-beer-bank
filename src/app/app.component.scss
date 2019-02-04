@@ -1,0 +1,26 @@
+@import '../styles/variables.scss';
+
+nav {
+  background-color: $primary-color;
+  justify-content: flex-end;
+  text-align: right;
+
+  a {
+    color: #ffffff;
+    margin-left: 2rem;
+    text-transform: uppercase;
+  }
+}
+
+header {
+  background-color: $primary-color;
+  color: #ffffff;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.advanced-search {
+  a {
+    color: #ffffff;
+  }
+}

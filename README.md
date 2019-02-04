@@ -1,6 +1,20 @@
 # TheBeerBank
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.
+This project was built with Angular 7 by Nicolae Tusinean.
+
+Hangouts/email: nicolae.tusinean@gmail.com
+
+Website: https://nicolaetusinean.ro
+
+Linkedin ID: nicolaetusinean 
+
+Deployed at: https://nicolaetusinean.ro/theBeerBank/
+
+# Setup the project
+1. Install NodeJS: https://nodejs.org/en/download/
+2. Install NPM: https://www.npmjs.com/get-npm
+3. Install Angular CLI by running: npm install -g @angular/cli 
+4. In CMD open the workspace of this project and run: npm install
 
 ## Development server
 
@@ -23,5 +37,7 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
+
+Email me at nicolae.tusinean@gmail.com 
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -1,0 +1,134 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <form (ngSubmit)="search()">
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="max_ibu">Max IBU</label>
+            <input type="number" class="form-control" id="max_ibu"
+                   [(ngModel)]="filters.ibu_lt" name="maxIbu"
+                   #maxIbu="ngModel">
+          </div>
+
+          <div class="form-group col-md-5 offset-2">
+            <label for="min_ibu">Min IBU</label>
+            <input type="number" class="form-control" id="min_ibu"
+                   [(ngModel)]="filters.ibu_gt" name="minIbu"
+                   #minIbu="ngModel">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="max_abv">Max ABV</label>
+            <input type="number" class="form-control" id="max_abv"
+                   [(ngModel)]="filters.abv_lt" name="maxAbv"
+                   #maxAbv="ngModel">
+          </div>
+
+          <div class="form-group col-md-5 offset-2">
+            <label for="min_abv">Min ABV</label>
+            <input type="number" class="form-control" id="min_abv"
+                   [(ngModel)]="filters.abv_gt" name="minAbv"
+                   #minAbv="ngModel">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="max_ebc">Max EBC</label>
+            <input type="number" class="form-control" id="max_ebc"
+                   [(ngModel)]="filters.ebc_lt" name="maxEbc"
+                   #maxEbc="ngModel">
+          </div>
+
+          <div class="form-group col-md-5 offset-2">
+            <label for="min_ebc">Min EBC</label>
+            <input type="number" class="form-control" id="min_ebc"
+                   [(ngModel)]="filters.ebc_gt" name="minEbc"
+                   #minEbc="ngModel">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="brewed_before_month">Brewed Before (month)</label>
+            <select id="brewed_before_month" class="form-control"
+                    [(ngModel)]="filters.brewed_before.month" name="brewed_before_month"
+                    #brewed_before_month="ngModel">
+              <option *ngFor="let month of months">{{month}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-5 offset-2">
+            <label for="brewed_before_year">Brewed Before (year)</label>
+            <select id="brewed_before_year" class="form-control"
+                    [(ngModel)]="filters.brewed_before.year" name="brewed_before_year"
+                    #brewed_before_year="ngModel">
+              <option *ngFor="let year of years">{{year}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="brewed_after_month">Brewed After (month)</label>
+            <select id="brewed_after_month" class="form-control"
+                    [(ngModel)]="filters.brewed_after.month" name="brewed_after_month"
+                    #brewed_after_month="ngModel">
+              <option *ngFor="let month of months">{{month}}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-5 offset-2">
+            <label for="brewed_after_year">Brewed After (year)</label>
+            <select id="brewed_after_year" class="form-control"
+                    [(ngModel)]="filters.brewed_after.year" name="brewed_after_year"
+                    #brewed_after_year="ngModel">
+              <option *ngFor="let year of years">{{year}}</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Search</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <div class="loader" *ngIf="loading">Loading...</div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center text-center">
+    <h3 *ngIf="submitted && !loading && beers.length === 0" class="col-md-5">No beers were found matching your criteria.</h3>
+  </div>
+
+  <div class="row justify-content-center text-center">
+    <h3 *ngIf="submitted && !loading && errors.length === 0" class="col-8">{{ errors.join('. ') }}</h3>
+  </div>
+
+  <div class="row justify-content-center" *ngIf="!loading">
+    <div class="card-columns">
+      <div
+              *ngFor="let beer of beers"
+              [class.selected]="beer === selectedBeer"
+              (click)="openBeerModal(beer)"
+              class="card beer"
+      >
+        <button (click)="addOrRemoveToFavourites(beer);$event.stopPropagation();"
+                [ngClass]="(beer.isInFavouriteList) ? 'active': ''"
+                class="btn btn-link favouriteIcon"
+        >&#9734;</button>
+        <img class="card-img-top" src="{{beer.image_url}}" alt="{{beer.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{beer.name}}</h5>
+          <p class="card-text">{{beer.tagline}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<form (ngSubmit)="search()">
+  <div class="form-group">
+    <input type="text" class="form-control" id="searchTerm"
+           [(ngModel)]="filters.name" name="searchTerm"
+           #searchTerm="ngModel"
+           placeholder="Search for beer name"
+           autocomplete="off"
+    >
+  </div>
+</form>

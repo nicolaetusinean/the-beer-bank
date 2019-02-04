@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <div class="loader" *ngIf="loading">Loading...</div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center text-center">
+    <h3 *ngIf="loaded && beers.length === 0" class="col-md-5">You have no beers in your favourites list.</h3>
+  </div>
+
+  <div class="row">
+    <div class="card-columns">
+      <div
+              *ngFor="let beer of beers"
+              class="card beer"
+              (click)="openBeerModal(beer)"
+      >
+        <button (click)="removeFromFavourites(beer);$event.stopPropagation();"
+                class="btn btn-link favouriteIcon active"
+        >&#9734;</button>
+        <img class="card-img-top" src="{{beer.image_url}}" alt="{{beer.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{beer.name}}</h5>
+          <p class="card-text">{{beer.tagline}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

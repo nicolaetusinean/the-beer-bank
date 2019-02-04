@@ -1,0 +1,53 @@
+@import '../../styles/variables.scss';
+
+.modal-header {
+  border-bottom: 0;
+}
+
+h3, h4 {
+  color: $primary-color;
+}
+
+h6 {
+  color: $secondary-color;
+}
+
+.beer-details {
+  .comparison-units {
+    padding: 0;
+
+    li {
+      display: inline-block;
+      margin-right: 1rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .description {
+    color: $secondary-color;
+  }
+
+  .food-pairing {
+    li {
+      color: $secondary-color;
+    }
+  }
+}
+
+.card {
+  height: 17rem;
+  padding-top: 1rem;
+  text-align: center;
+
+  .card-title {
+    color: $secondary-color;
+  }
+
+  .card-img-top {
+    margin: 0 auto;
+    width: 25%;
+  }
+}

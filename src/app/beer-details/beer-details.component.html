@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="row beer-details">
+    <div class="col-sm-12 col-md-4">
+      <img class="card-img-top" src="{{beer.image_url}}" alt="{{beer.name}}">
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <h3 ngbAutofocus>{{beer.name}}</h3>
+      <h6>{{beer.tagline}}</h6>
+
+      <ul class="comparison-units">
+        <li><b>IBU:</b> {{beer.ibu}}</li>
+        <li><b>ABV:</b> {{beer.abv}}%</li>
+        <li><b>EBC:</b> {{beer.ebc}}</li>
+      </ul>
+
+      <div class="description">
+        <p>{{beer.description}}</p>
+      </div>
+
+      <div class="food-pairing">
+        <b>Best served with:</b>
+        <ul *ngIf="beer.food_pairing.length">
+          <li *ngFor="let food of beer.food_pairing">{{food}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="similar-products" *ngIf="similarBeersLoaded">
+    <h4 *ngIf="similarBeers.length">You might also like:</h4>
+    <div *ngIf="similarBeers.length" class="card-columns">
+      <div
+              *ngFor="let beer of similarBeers"
+              (click)="openBeerModal(beer)"
+              class="card beer"
+      >
+        <img class="card-img-top" src="{{beer.image_url}}" alt="{{beer.name}}">
+        <div class="card-body">
+          <h5 class="card-title">{{beer.name}}</h5>
+        </div>
+      </div>
+    </div>
+
+    <p *ngIf="!similarBeers.length">This beer seems to be pretty unique because we couldn't find similar beers.</p>
+  </div>
+</div>
