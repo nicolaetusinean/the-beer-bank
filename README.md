@@ -2,8 +2,6 @@
 
 This project was built with Angular 7 by Nicolae Tusinean.
 
-Hangouts/email: nicolae.tusinean@gmail.com
-
 Website: https://nicolaetusinean.ro
 
 Linkedin ID: nicolaetusinean 
