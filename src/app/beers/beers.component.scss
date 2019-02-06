@@ -58,8 +58,13 @@
   }
 
   .card-img-top {
+    height: 9rem;
     margin: 0 auto;
-    width: 10%;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+    }
   }
 
   .card-text {
