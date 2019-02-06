@@ -26,8 +26,8 @@ export class BeerDetailsComponent implements OnInit {
     const filters = {
       abv_gt: Math.round(this.beer.abv) - 2,
       abv_lt: Math.round(this.beer.abv) + 2,
-      ibu_gt: this.beer.ibu - 15,
-      ibu_lt: this.beer.ibu + 15,
+      ibu_gt: Math.round(this.beer.ibu) - 15,
+      ibu_lt: Math.round(this.beer.ibu) + 15,
     };
 
     // get 4 items just in case that the selected beer will be in the returned list
