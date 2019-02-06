@@ -19,9 +19,17 @@ export class BasicSearchComponent extends BeersComponent implements OnInit {
               private route: ActivatedRoute
   ) {
     super(beersService, modalService, favouriteBeersService);
+
+    this.route.queryParams.subscribe(params => {
+      this.onQueryParamsChange();
+    });
   }
 
   ngOnInit() {
+    this.search();
+  }
+
+  onQueryParamsChange() {
     this.search();
   }
 
@@ -53,5 +61,4 @@ export class BasicSearchComponent extends BeersComponent implements OnInit {
   getSearchTermFromQueryParams() {
     return this.route.snapshot.queryParamMap.get('searchTerm');
   }
-
 }
