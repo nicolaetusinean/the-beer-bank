@@ -28,8 +28,9 @@ export class SearchBarComponent implements OnInit {
   }
 
   redirectToBasicSearch(queryParams: object) {
+    console.log('redirect');
     this.router.navigate(['/basic-search'], {
-      queryParams: queryParams
-    });
+      queryParams: queryParams,
+    }).then(ok => console.log('ok', ok), error => console.log('err', error));
   }
 }
