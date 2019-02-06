@@ -64,6 +64,11 @@ export class AdvancedSearchComponent extends BeersComponent implements OnInit {
     );
   }
 
+  clearResultsList() {
+    this.beers = [];
+    this.submitted = false;
+  }
+
   /**
    * Empty filters are removed and date is formatted.
    */
