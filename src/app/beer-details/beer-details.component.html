@@ -39,7 +39,9 @@
               (click)="openBeerModal(beer)"
               class="card beer"
       >
-        <img class="card-img-top" src="{{beer.image_url}}" alt="{{beer.name}}">
+        <div class="card-img-top">
+          <img src="{{beer.image_url}}" alt="{{beer.name}}">
+        </div>
         <div class="card-body">
           <h5 class="card-title">{{beer.name}}</h5>
         </div>

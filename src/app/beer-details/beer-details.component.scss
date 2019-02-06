@@ -47,7 +47,11 @@ h6 {
   }
 
   .card-img-top {
+    height: 8rem;
     margin: 0 auto;
-    width: 25%;
+
+    img {
+      height: 100%;
+    }
   }
 }
