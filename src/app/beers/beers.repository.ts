@@ -3,12 +3,13 @@ import {BeerEntity} from './beer.entity';
 import {Observable, of} from 'rxjs';
 import {catchError, tap, map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BeersRepository {
-  url = 'https://api.punkapi.com/';
+  url = environment.beersAPIUrl;
   apiVersion = 'v2';
   resource = 'beers';
 
