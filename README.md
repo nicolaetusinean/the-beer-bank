@@ -1,4 +1,4 @@
-# TheBeerBank
+# 3 Frameworks Challenge - Beers Menu - Angular
 
 This project was built with Angular 7 by Nicolae Tusinean.
 
@@ -35,7 +35,5 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Further help
-
-Email me at nicolae.tusinean@gmail.com 
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
