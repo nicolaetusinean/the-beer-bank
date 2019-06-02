@@ -5,25 +5,8 @@
          [infiniteScrollDistance]="2"
          [infiniteScrollThrottle]="50"
          (scrolled)="onScroll()">
-      <div
-              *ngFor="let beer of beers"
-              [class.selected]="beer === selectedBeer"
-              (click)="openBeerModal(beer)"
-              class="card beer"
-      >
-        <button (click)="addOrRemoveToFavourites(beer);$event.stopPropagation();"
-                [ngClass]="(beer.isInFavouriteList) ? 'active': ''"
-                class="btn btn-link favouriteIcon"
-        >&#9734;
-        </button>
-        <div class="card-img-top">
-          <img src="{{beer.image_url}}" alt="{{beer.name}}">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{beer.name}}</h5>
-          <p class="card-text">{{beer.tagline}}</p>
-        </div>
-      </div>
+
+      <app-beer *ngFor="let beer of beers" [beer]="beer"></app-beer>
     </div>
   </div>
 

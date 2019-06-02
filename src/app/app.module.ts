@@ -9,6 +9,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BeersComponent } from './beers/beers.component';
+import { BeerComponent } from './beers/beer.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
 import { BeerFavouritesComponent } from './beer-favourites/beer-favourites.component';
 import { AdvancedSearchComponent } from './search/advanced-search.component';
@@ -19,6 +20,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 @NgModule({
   declarations: [
     AppComponent,
+    BeerComponent,
     BeersComponent,
     BeerDetailsComponent,
     BeerFavouritesComponent,

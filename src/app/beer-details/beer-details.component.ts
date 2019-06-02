@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {BeerEntity} from '../beers/beer.entity';
 import {BeersService} from '../beers/beers.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-beer-details',
@@ -14,10 +15,20 @@ export class BeerDetailsComponent implements OnInit {
   similarBeersLoaded = false;
   private errors;
 
-  constructor(public activeModal: NgbActiveModal, private beersService: BeersService) { }
+  constructor(
+    private activeModal: NgbActiveModal,
+    private modalService: NgbModal,
+    private beersService: BeersService
+  ) { }
 
   ngOnInit() {
     this.getSimilarBeers();
+  }
+
+  openBeerModal(beer: BeerEntity) {
+    this.activeModal.dismiss(); // close the current modal
+    const modalRef = this.modalService.open(BeerDetailsComponent, {});
+    modalRef.componentInstance.beer = beer;
   }
 
   getSimilarBeers() {
