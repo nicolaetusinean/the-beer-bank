@@ -4,11 +4,13 @@ import {Observable, of} from 'rxjs';
 import {catchError, tap, map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import { environment } from '../../environments/environment';
+import { BeersRepository as IBeersRepository } from './interface/beers.repository';
+import {Beer as IBeer} from './interface/beer';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BeersRepository {
+export class BeersRepository implements IBeersRepository {
   url = environment.beersAPIUrl;
   apiVersion = 'v2';
   resource = 'beers';
@@ -24,7 +26,7 @@ export class BeersRepository {
    *
    * @return Observable
    */
-  getAll(filters: object = {}, page?: number, pageSize?: number): Observable<BeerEntity[]> {
+  getAll(filters: object = {}, page?: number, pageSize?: number): Observable<IBeer[]> {
     const url = this.url + [this.apiVersion, this.resource].join('/');
     let params = new HttpParams();
 
@@ -43,7 +45,7 @@ export class BeersRepository {
       params = params.append(filter, filters[filter].toString());
     }
 
-    return this.http.get<BeerEntity[]>(url, {params: params})
+    return this.http.get<IBeer[]>(url, {params: params})
       .pipe(
         map(beers => {
           return beers.map((beer) => new BeerEntity(beer));

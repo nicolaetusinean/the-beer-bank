@@ -1,17 +1,19 @@
 import {Injectable} from '@angular/core';
 import {BeerEntity} from '../beers/beer.entity';
 import {LocalStorageService} from 'ngx-webstorage';
+import {Beer} from '../beers/interface/beer';
+import {FavouriteBeersService as IFavouriteBeersService} from './interface/favourite-beers.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FavouriteBeersService {
+export class FavouriteBeersService implements IFavouriteBeersService {
   localstorageId = 'favouriteBeersIds';
   private idsSeparator = '|';
 
   constructor(private localStorageService: LocalStorageService) { }
 
-  addToList(beer: BeerEntity): boolean {
+  addToList(beer: Beer): boolean {
     const beerListIndex = this.isInList(beer);
 
     if (beerListIndex > -1) {
@@ -29,7 +31,7 @@ export class FavouriteBeersService {
   /**
    * @return number (position index in list or -1 if not found)
    */
-  isInList(beer: BeerEntity): number {
+  isInList(beer: Beer): number {
     const favouriteBeersIds = this.getList();
     const beerIndex = favouriteBeersIds.indexOf(beer.id.toString());
 

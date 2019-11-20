@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {BeerEntity} from './beer.entity';
-import {catchError, map, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {BeersRepository} from './beers.repository';
 import {FavouriteBeersService} from '../beer-favourites/favourite-beers.service';
+import {BeersService as IBeersService} from './interface/beers.service';
+import {Beer} from './interface/beer';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BeersService {
+export class BeersService implements IBeersService {
 
   constructor(private beersRepository: BeersRepository, private favouriteBeersService: FavouriteBeersService) {
   }
@@ -19,7 +20,7 @@ export class BeersService {
    * @param markFavourites If set to true, then BeerEntity flag `isInFavouriteList`
    *                       will be set true/false to each BeerEntity instance.
    */
-  getAll(filters?: object, page?: number, pageSize?: number, markFavourites = true): Observable<BeerEntity[]> {
+  getAll(filters?: object, page?: number, pageSize?: number, markFavourites = true): Observable<Beer[]> {
     return this.beersRepository.getAll(filters, page, pageSize).pipe(
       map(beers => {
           if (!markFavourites) {
@@ -41,7 +42,7 @@ export class BeersService {
   /**
    * Get the list of favourite beers. Will return an empty array if there are no favourite beers yet.
    */
-  getFavourites(): Observable<BeerEntity[]> {
+  getFavourites(): Observable<Beer[]> {
     const ids = this.favouriteBeersService.getList();
     if (ids.length === 0) {
       return Observable.create(observer => {

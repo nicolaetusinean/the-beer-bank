@@ -1,6 +1,4 @@
-import {Beer as IBeer} from './interface/beer';
-
-export class BeerEntity implements IBeer {
+export interface Beer {
   id: string;
   name: string;
   tagline: string;
@@ -22,12 +20,5 @@ export class BeerEntity implements IBeer {
   food_pairing: string[];
   brewers_tips: string;
   contributed_by: string;
-  isInFavouriteList = false;
-
-  constructor(data: object) {
-    let key;
-    for (key of Object.keys(data)) {
-      this[key] = data[key];
-    }
-  }
+  isInFavouriteList: boolean;
 }
